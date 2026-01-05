@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#approach", label: "Approach" },
-  { href: "#services", label: "Services" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/resources", label: "Resources" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function Navigation() {
@@ -71,15 +71,12 @@ export function Navigation() {
           >
             {navLinks.map((link, index) => (
               <li key={link.href}>
-                <motion.a
+                <Link
                   href={link.href}
                   className="label link-underline py-2"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
                 >
                   {link.label}
-                </motion.a>
+                </Link>
               </li>
             ))}
             <li>
@@ -147,13 +144,13 @@ export function Navigation() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * index }}
                     >
-                      <a
+                      <Link
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="font-display text-3xl font-light hover:text-terra-500 transition-colors"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </motion.li>
                   ))}
                 </ul>

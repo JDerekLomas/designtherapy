@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   description: "Psychotherapy and coaching that designs your future. Work with fresh perspectives for individuals, couples, and systems. Amsterdam-based, globally connected.",
   keywords: ["therapy", "coaching", "couples therapy", "psychotherapy", "Amsterdam", "mental health", "design thinking"],
   authors: [{ name: "Julika Lomas" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Design Therapy | Transform Your Inner World",
     description: "Psychotherapy and coaching that designs your future.",

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Post-it note background -->
+  <rect x="8" y="8" width="48" height="48" rx="3" fill="#FFEB3B" transform="rotate(-3 32 32)"/>
+  <!-- Tape at top -->
+  <rect x="22" y="4" width="20" height="8" rx="1" fill="white" opacity="0.7" transform="rotate(2 32 8)"/>
+  <!-- Fold corner -->
+  <path d="M48 48 L56 48 L48 56 Z" fill="#D4C32B" transform="rotate(-3 32 32)"/>
+  <!-- Heart -->
+  <path d="M32 24 C28 16, 18 18, 18 28 C18 38, 32 48, 32 48 C32 48, 46 38, 46 28 C46 18, 36 16, 32 24" fill="#E91E63" transform="rotate(-3 32 32)"/>
+  <!-- Heart shine -->
+  <ellipse cx="24" cy="26" rx="3" ry="4" fill="white" opacity="0.3" transform="rotate(-3 32 32)"/>
+</svg>
