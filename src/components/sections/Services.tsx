@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Users, User, Building } from "lucide-react";
+import { PostIt, MarkerHighlight } from "@/components/ui/PostIt";
 
 interface Service {
   id: string;
@@ -11,7 +12,7 @@ interface Service {
   tagline: string;
   description: string;
   features: string[];
-  imageUrl?: string;
+  color: "yellow" | "pink" | "blue" | "green";
 }
 
 const services: Service[] = [
@@ -21,13 +22,14 @@ const services: Service[] = [
     title: "Couples Coaching",
     tagline: "Design Your Future Together",
     description:
-      "Navigate relationship challenges with fresh perspectives. Using the Rope Method and systemic approaches, discover new ways of connecting that honor both partners.",
+      "Navigate relationship challenges with fresh perspectives. Using the Rope Method and systemic approaches, discover new ways of connecting.",
     features: [
       "Relationship dynamics mapping",
-      "Communication enhancement",
+      "Communication patterns",
       "Conflict transformation",
-      "Intimacy & connection work",
+      "Intimacy & connection",
     ],
+    color: "pink",
   },
   {
     id: "individual",
@@ -35,13 +37,14 @@ const services: Service[] = [
     title: "Individual Sessions",
     tagline: "Design Your Life",
     description:
-      "Personal growth and self-discovery through embodied practices. Move beyond limiting patterns and design a life aligned with your authentic self.",
+      "Personal growth through embodied practices. Move beyond limiting patterns and design a life aligned with your authentic self.",
     features: [
       "Personal development",
-      "Anxiety & stress management",
+      "Anxiety & stress",
       "Life transitions",
-      "Self-relationship work",
+      "Self-relationship",
     ],
+    color: "blue",
   },
   {
     id: "systems",
@@ -49,13 +52,14 @@ const services: Service[] = [
     title: "Systemic Work",
     tagline: "Design Your System",
     description:
-      "Explore the larger systems you're part of—family constellations, organizational dynamics, and inherited patterns that shape your present.",
+      "Explore the larger systems you're part of—family patterns, organizational dynamics, and inherited stories that shape your present.",
     features: [
-      "Family constellation work",
-      "Organizational consulting",
+      "Family constellations",
       "Team dynamics",
-      "Intergenerational patterns",
+      "Organizational patterns",
+      "Intergenerational work",
     ],
+    color: "green",
   },
 ];
 
@@ -73,7 +77,10 @@ export function Services({
   const imageUrls = [couplesImageUrl, individualImageUrl, officeImageUrl];
 
   return (
-    <section id="services" className="py-section bg-cloud-50 dark:bg-ink-900">
+    <section
+      id="services"
+      className="py-section bg-white dark:bg-ink-900"
+    >
       <div className="container-wide">
         {/* Header */}
         <motion.div
@@ -81,22 +88,22 @@ export function Services({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="label mb-4 block">Services</span>
-          <h2 className="heading-lg mb-6">
-            Choose your
-            <span className="text-terra-500 dark:text-terra-400"> path</span>
+          <h2 className="heading-lg mb-4">
+            <span className="font-handwriting text-4xl md:text-5xl text-terra-500 block mb-2">
+              How can I help?
+            </span>
+            Choose your <MarkerHighlight color="pink">path</MarkerHighlight>
           </h2>
           <p className="body-md text-ink-600 dark:text-cloud-400">
-            Whether you&apos;re seeking individual transformation, deeper connection
-            with a partner, or understanding of systemic patterns, there&apos;s a
-            journey here for you.
+            Whether you&apos;re designing your individual journey, your relationship,
+            or understanding the systems you&apos;re part of.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="space-y-24">
+        {/* Services as workspace cards */}
+        <div className="space-y-16">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -104,64 +111,88 @@ export function Services({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
                 index % 2 === 1 ? "lg:grid-flow-dense" : ""
               }`}
             >
-              {/* Image */}
-              <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden group">
+              {/* Image - looks like a photo pinned to board */}
+              <div
+                className={`lg:col-span-5 ${
+                  index % 2 === 1 ? "lg:col-start-8" : ""
+                }`}
+              >
+                <motion.div
+                  whileHover={{ rotate: 0, scale: 1.02 }}
+                  className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl"
+                  style={{ transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)` }}
+                >
                   {imageUrls[index] ? (
                     <Image
                       src={imageUrls[index]!}
                       alt={service.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 40vw"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-terra-100 to-sage-100 dark:from-ink-800 dark:to-ink-700 flex items-center justify-center">
-                      <service.icon className="w-24 h-24 text-terra-300 dark:text-ink-600" />
+                    <div className="w-full h-full bg-gradient-to-br from-terra-100 to-sage-100 flex items-center justify-center">
+                      <service.icon className="w-24 h-24 text-terra-300" />
                     </div>
                   )}
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
+                  {/* Tape corners */}
+                  <div className="absolute top-2 left-2 w-12 h-5 bg-[#F5F5DC]/80 rotate-[-15deg] shadow-sm" />
+                  <div className="absolute top-2 right-2 w-12 h-5 bg-[#F5F5DC]/80 rotate-[10deg] shadow-sm" />
+                </motion.div>
               </div>
 
               {/* Content */}
-              <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-terra-100 dark:bg-terra-900/50 flex items-center justify-center">
-                    <service.icon className="w-6 h-6 text-terra-600 dark:text-terra-400" />
-                  </div>
-                  <span className="label">{service.tagline}</span>
-                </div>
+              <div
+                className={`lg:col-span-7 ${
+                  index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
+                }`}
+              >
+                {/* Post-it tagline */}
+                <motion.div
+                  initial={{ opacity: 0, rotate: 5 }}
+                  whileInView={{ opacity: 1, rotate: -2 }}
+                  viewport={{ once: true }}
+                  className="inline-block mb-4"
+                >
+                  <PostIt color={service.color} rotation={-2} size="sm">
+                    <span className="font-handwriting text-lg">{service.tagline}</span>
+                  </PostIt>
+                </motion.div>
 
-                <h3 className="heading-md mb-4">{service.title}</h3>
-                <p className="body-md text-ink-600 dark:text-cloud-400 mb-8">
+                <h3 className="heading-md mb-4 flex items-center gap-3">
+                  <service.icon className="w-8 h-8 text-terra-500" />
+                  {service.title}
+                </h3>
+
+                <p className="body-md text-ink-600 dark:text-cloud-400 mb-6">
                   {service.description}
                 </p>
 
-                <ul className="space-y-3 mb-8">
+                {/* Features as checklist style */}
+                <ul className="grid grid-cols-2 gap-3 mb-8">
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center gap-3 text-ink-600 dark:text-cloud-400"
+                      className="flex items-center gap-2 font-handwriting text-lg text-ink-600 dark:text-cloud-400"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-terra-500" />
-                      <span className="body-sm">{feature}</span>
+                      <span className="text-terra-500">✓</span>
+                      {feature}
                     </li>
                   ))}
                 </ul>
 
                 <motion.a
                   href="#schedule"
-                  className="inline-flex items-center gap-2 text-terra-600 dark:text-terra-400 font-medium group/link"
-                  whileHover={{ x: 5 }}
+                  className="inline-flex items-center gap-2 btn-primary"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="link-underline">Learn more</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  Start Here
+                  <ArrowRight className="w-4 h-4" />
                 </motion.a>
               </div>
             </motion.div>

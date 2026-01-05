@@ -1,51 +1,65 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { PostIt } from "@/components/ui/PostIt";
 
 const testimonials = [
   {
     quote:
-      "Working with Julika transformed how my partner and I communicate. The Rope Method revealed patterns we never knew existed, and gave us tools to build something new together.",
-    author: "Anonymous",
-    context: "Couples Coaching Client",
+      "The Rope Method revealed patterns we never knew existed. We finally see our relationship clearly.",
+    author: "Couples client",
+    color: "yellow" as const,
+    rotation: -3,
   },
   {
     quote:
-      "I came seeking clarity and found so much more. The embodied approach helped me understand myself in ways that years of talk therapy hadn't accessed.",
-    author: "Anonymous",
-    context: "Individual Session Client",
+      "I came seeking clarity and found so much more. The embodied approach changed everything.",
+    author: "Individual client",
+    color: "pink" as const,
+    rotation: 2,
   },
   {
     quote:
-      "The systemic perspective was eye-opening. Understanding my place in larger patterns gave me both freedom and direction I didn't know I was missing.",
-    author: "Anonymous",
-    context: "Systemic Work Client",
+      "Understanding my place in larger patterns gave me both freedom and direction.",
+    author: "Systemic work client",
+    color: "blue" as const,
+    rotation: -2,
+  },
+  {
+    quote:
+      "It's like having a design partner for your life. Practical, insightful, transformative.",
+    author: "Individual client",
+    color: "green" as const,
+    rotation: 4,
+  },
+  {
+    quote:
+      "We learned to prototype new ways of being together. Our relationship is our ongoing project now.",
+    author: "Couples client",
+    color: "orange" as const,
+    rotation: -1,
   },
 ];
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
-  };
-
   return (
-    <section className="py-section bg-ink-900 dark:bg-ink-950 text-cloud-100 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-terra-900/20 to-transparent" />
-      </div>
+    <section
+      className="py-section relative overflow-hidden"
+      style={{
+        background: `linear-gradient(180deg, #FAF8F6 0%, #F5F0E8 100%)`,
+      }}
+    >
+      {/* Cork board texture */}
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage: `
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+          `,
+        }}
+      />
 
-      <div className="container-narrow relative z-10">
+      <div className="container-wide relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,76 +68,107 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="label text-cloud-500 mb-4 block">Testimonials</span>
-          <h2 className="heading-lg">
-            Words from those who&apos;ve
-            <span className="text-terra-400"> walked this path</span>
+          <h2 className="heading-lg mb-4">
+            <span className="font-handwriting text-4xl md:text-5xl text-terra-500 block mb-2">
+              Feedback Wall
+            </span>
+            What clients say
           </h2>
+          <p className="body-md text-ink-600 max-w-xl mx-auto">
+            Anonymous notes from those who&apos;ve walked this path
+          </p>
         </motion.div>
 
-        {/* Testimonial Carousel */}
-        <div className="relative">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <Quote className="w-12 h-12 text-terra-500/30 mx-auto mb-8" />
-            <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed mb-8 text-balance">
-              &ldquo;{testimonials[currentIndex].quote}&rdquo;
-            </blockquote>
-            <div>
-              <p className="font-medium text-cloud-300">
-                {testimonials[currentIndex].author}
-              </p>
-              <p className="label text-cloud-600 mt-1">
-                {testimonials[currentIndex].context}
-              </p>
-            </div>
-          </motion.div>
+        {/* Testimonials as scattered post-its */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Desktop: scattered layout */}
+          <div className="hidden md:block relative h-[500px]">
+            {testimonials.map((testimonial, index) => {
+              // Position each post-it in a scattered but balanced way
+              const positions = [
+                { top: "0%", left: "5%" },
+                { top: "10%", left: "55%" },
+                { top: "35%", left: "25%" },
+                { top: "40%", left: "70%" },
+                { top: "60%", left: "10%" },
+              ];
+              const pos = positions[index];
 
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <motion.button
-              onClick={prev}
-              className="p-3 rounded-full border border-ink-700 hover:border-terra-500 hover:bg-terra-500/10 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </motion.button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <button
+              return (
+                <motion.div
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "w-8 bg-terra-500"
-                      : "bg-ink-700 hover:bg-ink-600"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
+                  initial={{ opacity: 0, y: 50, rotate: testimonial.rotation * 2 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: testimonial.rotation }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="absolute"
+                  style={{ top: pos.top, left: pos.left }}
+                >
+                  <PostIt
+                    color={testimonial.color}
+                    rotation={testimonial.rotation}
+                    size="lg"
+                    className="w-[280px]"
+                  >
+                    <p className="font-handwriting text-xl text-ink-700 mb-4 leading-relaxed">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                    <p className="text-sm text-ink-500 italic">
+                      — {testimonial.author}
+                    </p>
+                  </PostIt>
+                </motion.div>
+              );
+            })}
+          </div>
 
-            <motion.button
-              onClick={next}
-              className="p-3 rounded-full border border-ink-700 hover:border-terra-500 hover:bg-terra-500/10 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </motion.button>
+          {/* Mobile: stacked grid */}
+          <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {testimonials.slice(0, 4).map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <PostIt
+                  color={testimonial.color}
+                  rotation={testimonial.rotation}
+                  size="md"
+                >
+                  <p className="font-handwriting text-lg text-ink-700 mb-3">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <p className="text-sm text-ink-500 italic">
+                    — {testimonial.author}
+                  </p>
+                </PostIt>
+              </motion.div>
+            ))}
           </div>
         </div>
+
+        {/* Add your note CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="text-center mt-16"
+        >
+          <p className="font-handwriting text-2xl text-ink-500 mb-4">
+            Ready to start your own story?
+          </p>
+          <motion.a
+            href="#schedule"
+            className="btn-primary"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Book a Session
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

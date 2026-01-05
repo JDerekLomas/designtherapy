@@ -67,6 +67,7 @@ const config: Config = {
         display: ["var(--font-display)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        handwriting: ["var(--font-handwriting)", "cursive"],
       },
       fontSize: {
         "display-xl": ["clamp(3rem, 8vw, 7rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],

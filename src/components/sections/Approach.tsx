@@ -1,46 +1,68 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, Heart, Layers, Sparkles } from "lucide-react";
+import { PostIt, MarkerHighlight } from "@/components/ui/PostIt";
 
 const approaches = [
   {
-    icon: Compass,
+    color: "yellow" as const,
+    rotation: -2,
     title: "Future-Oriented",
-    description:
-      "Rather than dwelling solely on the past, we focus on designing the future you want to create. Your history informs but doesn't define your path forward.",
+    note: "We don't just analyze the past — we design your future",
+    detail: "What do you want to build?",
   },
   {
-    icon: Heart,
+    color: "pink" as const,
+    rotation: 3,
     title: "The Rope Method",
-    description:
-      "A unique embodied practice that makes relationship dynamics visible and tangible. Through physical exercises, patterns become clear and transformation becomes possible.",
+    note: "Make invisible dynamics visible through embodied exercises",
+    detail: "See your patterns clearly",
   },
   {
-    icon: Layers,
-    title: "Systemic Perspective",
-    description:
-      "We exist within systems—families, relationships, organizations. Understanding these interconnections reveals new possibilities for change and growth.",
+    color: "blue" as const,
+    rotation: -1,
+    title: "Systemic View",
+    note: "You exist within systems: family, work, relationships",
+    detail: "Understand the bigger picture",
   },
   {
-    icon: Sparkles,
+    color: "green" as const,
+    rotation: 2,
     title: "Fresh Perspectives",
-    description:
-      "Every session brings new ways of seeing. By shifting perspective, what seemed stuck becomes fluid, and new paths emerge naturally.",
+    note: "Every session brings new ways of seeing",
+    detail: "Shift happens here",
   },
+];
+
+const processSteps = [
+  { step: "01", title: "Map", desc: "Understand where you are" },
+  { step: "02", title: "Explore", desc: "Discover new possibilities" },
+  { step: "03", title: "Prototype", desc: "Try new patterns" },
+  { step: "04", title: "Build", desc: "Create lasting change" },
 ];
 
 export function Approach() {
   return (
     <section
       id="approach"
-      className="py-section bg-cloud-100 dark:bg-ink-800 relative overflow-hidden"
+      className="py-section relative overflow-hidden"
+      style={{
+        background: `
+          linear-gradient(to bottom, #F5F0E8, #FAF8F6)
+        `,
+      }}
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-terra-100/50 to-transparent dark:from-terra-900/20" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-sage-100/50 to-transparent dark:from-sage-900/20" />
-      </div>
+      {/* Whiteboard/cork board texture */}
+      <div
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, #C9BBA8 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, #C9BBA8 1px, transparent 1px)
+          `,
+          backgroundSize: "30px 30px",
+        }}
+      />
 
       <div className="container-wide relative z-10">
         {/* Header */}
@@ -49,64 +71,121 @@ export function Approach() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="label mb-4 block">The Approach</span>
-          <h2 className="heading-lg mb-6">
-            A method that moves
-            <span className="text-terra-500 dark:text-terra-400"> beyond words</span>
+          <h2 className="heading-lg mb-4">
+            <span className="font-handwriting text-4xl md:text-5xl text-terra-500 block mb-2">
+              The Process
+            </span>
+            Therapy as <MarkerHighlight color="yellow">Design Thinking</MarkerHighlight>
           </h2>
           <p className="body-md text-ink-600 dark:text-cloud-400">
-            Combining psychotherapy, coaching, and embodied practices to create
-            lasting transformation. This isn&apos;t just talk therapy—it&apos;s an
-            experience that engages your whole being.
+            Like any good design process, we start with understanding, move through
+            exploration, and build toward meaningful change.
           </p>
         </motion.div>
 
-        {/* Approach Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {approaches.map((approach, index) => (
-            <motion.div
-              key={approach.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="glass-card p-8 md:p-10 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-terra-100 dark:bg-terra-900/50 flex items-center justify-center group-hover:bg-terra-500 group-hover:text-white transition-all duration-300">
-                    <approach.icon className="w-6 h-6 text-terra-600 dark:text-terra-400 group-hover:text-white transition-colors" />
+        {/* Design Process Steps - like a timeline/flowchart */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-20"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg relative">
+            {/* Tape decorations */}
+            <div className="absolute -top-3 left-12 w-16 h-6 bg-[#F5F5DC]/90 rotate-[-3deg] shadow-sm" />
+            <div className="absolute -top-3 right-12 w-16 h-6 bg-[#F5F5DC]/90 rotate-[2deg] shadow-sm" />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * index }}
+                  className="text-center relative"
+                >
+                  {/* Arrow connector */}
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-8 -right-2 text-terra-300 text-2xl font-handwriting">
+                      →
+                    </div>
+                  )}
+                  <div className="font-handwriting text-5xl text-terra-400 mb-2">
+                    {step.step}
                   </div>
-                  <div>
-                    <h3 className="heading-sm mb-3 group-hover:text-terra-600 dark:group-hover:text-terra-400 transition-colors">
-                      {approach.title}
-                    </h3>
-                    <p className="body-md text-ink-600 dark:text-cloud-400">
-                      {approach.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  <h3 className="font-display text-xl font-medium mb-1">
+                    {step.title}
+                  </h3>
+                  <p className="font-handwriting text-lg text-ink-500">
+                    {step.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Post-it note grid - key principles */}
+        <div className="mb-16">
+          <h3 className="font-handwriting text-3xl text-center text-ink-600 mb-8">
+            Core Principles
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+            {approaches.map((approach, index) => (
+              <motion.div
+                key={approach.title}
+                initial={{ opacity: 0, y: 30, rotate: approach.rotation * 2 }}
+                whileInView={{ opacity: 1, y: 0, rotate: approach.rotation }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <PostIt
+                  color={approach.color}
+                  rotation={approach.rotation}
+                  size="lg"
+                  className="w-full max-w-[220px]"
+                >
+                  <h4 className="font-display text-lg font-semibold mb-2 text-ink-800">
+                    {approach.title}
+                  </h4>
+                  <p className="font-handwriting text-xl text-ink-700 mb-3">
+                    {approach.note}
+                  </p>
+                  <p className="text-sm text-ink-500 italic">
+                    {approach.detail}
+                  </p>
+                </PostIt>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Quote */}
-        <motion.blockquote
+        {/* Quote - like a note pinned to a board */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 text-center max-w-4xl mx-auto"
+          className="max-w-3xl mx-auto"
         >
-          <p className="font-display text-2xl md:text-3xl font-light text-ink-700 dark:text-cloud-300 italic leading-relaxed">
-            &ldquo;The quality of our relationships determines the quality of our lives.
-            When we learn to design these connections intentionally, everything changes.&rdquo;
-          </p>
-          <cite className="mt-6 block label not-italic">— Julika Lomas</cite>
-        </motion.blockquote>
+          <div className="bg-white rounded-xl p-8 shadow-lg relative">
+            {/* Pin decoration */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-red-400 shadow-md" />
+            <blockquote className="text-center">
+              <p className="font-display text-2xl md:text-3xl font-light text-ink-700 italic leading-relaxed mb-4">
+                &ldquo;The quality of our relationships determines the quality of our lives.
+                When we learn to design these connections intentionally, everything changes.&rdquo;
+              </p>
+              <cite className="font-handwriting text-xl text-terra-500 not-italic">
+                — Julika Lomas
+              </cite>
+            </blockquote>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
