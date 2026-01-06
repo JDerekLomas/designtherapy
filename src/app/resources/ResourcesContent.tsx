@@ -248,6 +248,47 @@ export function ResourcesContent() {
         </div>
       </section>
 
+      {/* Featured Resource: Card Deck */}
+      <section className="container-wide mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Link href="/resources/card-deck" className="block group">
+            <div className="bg-gradient-to-br from-ink-900 to-ink-800 rounded-2xl p-8 md:p-12 relative overflow-hidden hover:shadow-2xl transition-shadow">
+              {/* Decorative cards */}
+              <div className="absolute -right-8 -top-8 w-32 h-48 bg-[#F48FB1]/20 rounded-lg rotate-12 transform group-hover:rotate-6 transition-transform" />
+              <div className="absolute right-8 -top-4 w-32 h-48 bg-[#A5D6A7]/20 rounded-lg rotate-6 transform group-hover:rotate-3 transition-transform" />
+              <div className="absolute right-24 top-0 w-32 h-48 bg-[#81D4FA]/20 rounded-lg rotate-[-3deg] transform group-hover:rotate-0 transition-transform" />
+
+              <div className="relative z-10 max-w-2xl">
+                <span className="font-handwriting text-2xl text-terra-400 block mb-2">
+                  New Resource
+                </span>
+                <h2 className="heading-lg text-cloud-100 mb-4">
+                  Reframing Relationships Card Deck
+                </h2>
+                <p className="body-md text-cloud-400 mb-6">
+                  A two-player card game for couples and families to explore potential conflicts safely through counterfactual scenarios. Based on Gottman Method, EFT, and design thinking principles.
+                </p>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: '#81D4FA20', color: '#81D4FA' }}>Territory</span>
+                  <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: '#F48FB120', color: '#F48FB1' }}>Danger Zone</span>
+                  <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: '#FFCC8020', color: '#FFCC80' }}>Watch Out</span>
+                  <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: '#A5D6A720', color: '#A5D6A7' }}>Try This</span>
+                  <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: '#CE93D820', color: '#CE93D8' }}>Core Need</span>
+                </div>
+                <span className="inline-flex items-center gap-2 text-terra-400 font-medium group-hover:gap-3 transition-all">
+                  Explore the deck
+                  <ArrowRight className="w-5 h-5" />
+                </span>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      </section>
+
       {/* Frameworks Reference */}
       <section className="container-wide mb-24">
         <motion.div
