@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
-  { href: "/resources", label: "Resources" },
-  { href: "/blog", label: "Blog" },
+  { href: "/", hash: "#about", label: "About" },
+  { href: "/", hash: "#services", label: "Services" },
+  { href: "/resources", hash: "", label: "Resources" },
+  { href: "/blog", hash: "", label: "Blog" },
 ];
 
 export function Navigation() {
@@ -70,9 +70,9 @@ export function Navigation() {
             className="hidden md:flex items-center gap-10"
           >
             {navLinks.map((link, index) => (
-              <li key={link.href}>
+              <li key={link.label}>
                 <Link
-                  href={link.href}
+                  href={`${link.href}${link.hash}`}
                   className="label link-underline py-2"
                 >
                   {link.label}
@@ -81,7 +81,7 @@ export function Navigation() {
             ))}
             <li>
               <motion.a
-                href="#schedule"
+                href="/#schedule"
                 className="btn-primary text-xs"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -139,13 +139,13 @@ export function Navigation() {
                 <ul className="flex flex-col gap-6">
                   {navLinks.map((link, index) => (
                     <motion.li
-                      key={link.href}
+                      key={link.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * index }}
                     >
                       <Link
-                        href={link.href}
+                        href={`${link.href}${link.hash}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="font-display text-3xl font-light hover:text-terra-500 transition-colors"
                       >
@@ -156,7 +156,7 @@ export function Navigation() {
                 </ul>
                 <div className="mt-auto">
                   <a
-                    href="#schedule"
+                    href="/#schedule"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="btn-primary w-full text-center"
                   >

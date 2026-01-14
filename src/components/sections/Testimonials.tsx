@@ -6,7 +6,7 @@ import { PostIt } from "@/components/ui/PostIt";
 const testimonials = [
   {
     quote:
-      "The Rope Method revealed patterns we never knew existed. We finally see our relationship clearly.",
+      "The systemic work revealed patterns we never knew existed. We finally see our relationship clearly.",
     author: "Couples client",
     color: "yellow" as const,
     rotation: -3,

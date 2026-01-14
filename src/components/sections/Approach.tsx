@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { PostIt, MarkerHighlight } from "@/components/ui/PostIt";
 
-const approaches = [
+const principles = [
   {
     color: "yellow" as const,
     rotation: -2,
@@ -12,22 +12,15 @@ const approaches = [
     detail: "What do you want to build?",
   },
   {
-    color: "pink" as const,
-    rotation: 3,
-    title: "The Rope Method",
-    note: "Make invisible dynamics visible through embodied exercises",
-    detail: "See your patterns clearly",
-  },
-  {
     color: "blue" as const,
-    rotation: -1,
+    rotation: 3,
     title: "Systemic View",
     note: "You exist within systems: family, work, relationships",
     detail: "Understand the bigger picture",
   },
   {
     color: "green" as const,
-    rotation: 2,
+    rotation: -1,
     title: "Fresh Perspectives",
     note: "Every session brings new ways of seeing",
     detail: "Shift happens here",
@@ -129,34 +122,34 @@ export function Approach() {
           </div>
         </motion.div>
 
-        {/* Post-it note grid - key principles */}
+        {/* Guiding Principles */}
         <div className="mb-16">
           <h3 className="font-handwriting text-3xl text-center text-ink-600 mb-8">
-            Core Principles
+            Guiding Principles
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-            {approaches.map((approach, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center max-w-4xl mx-auto">
+            {principles.map((principle, index) => (
               <motion.div
-                key={approach.title}
-                initial={{ opacity: 0, y: 30, rotate: approach.rotation * 2 }}
-                whileInView={{ opacity: 1, y: 0, rotate: approach.rotation }}
+                key={principle.title}
+                initial={{ opacity: 0, y: 30, rotate: principle.rotation * 2 }}
+                whileInView={{ opacity: 1, y: 0, rotate: principle.rotation }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <PostIt
-                  color={approach.color}
-                  rotation={approach.rotation}
+                  color={principle.color}
+                  rotation={principle.rotation}
                   size="lg"
-                  className="w-full max-w-[220px]"
+                  className="w-full max-w-[240px]"
                 >
-                  <h4 className="font-display text-lg font-semibold mb-2 text-ink-800">
-                    {approach.title}
+                  <h4 className="font-display text-xl font-semibold mb-2">
+                    {principle.title}
                   </h4>
-                  <p className="font-handwriting text-xl text-ink-700 mb-3">
-                    {approach.note}
+                  <p className="font-handwriting text-xl mb-3">
+                    {principle.note}
                   </p>
-                  <p className="text-sm text-ink-500 italic">
-                    {approach.detail}
+                  <p className="text-sm opacity-80 italic">
+                    {principle.detail}
                   </p>
                 </PostIt>
               </motion.div>

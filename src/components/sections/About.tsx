@@ -98,8 +98,8 @@ export function About({ imageUrl }: AboutProps) {
                 a clinical session.
               </p>
               <p className="body-md">
-                Through embodied exercises, systemic perspectives, and the unique
-                Rope Method, I help you see your patterns clearly—and design new ones.
+                Through embodied exercises and systemic perspectives,
+                I help you see your patterns clearly—and design new ones.
               </p>
               <p className="body-md">
                 Whether you&apos;re navigating personal growth, relationship challenges,
@@ -113,7 +113,7 @@ export function About({ imageUrl }: AboutProps) {
               {[
                 { label: "Systemic Therapist", color: "blue" as const },
                 { label: "Couples Coach", color: "green" as const },
-                { label: "Rope Method", color: "pink" as const },
+                { label: "Embodied Practice", color: "pink" as const },
               ].map((cred, i) => (
                 <motion.div
                   key={cred.label}

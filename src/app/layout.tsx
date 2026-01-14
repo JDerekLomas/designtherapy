@@ -30,6 +30,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://designtherapy.vercel.app"),
   title: "Design Therapy | Transform Your Inner World",
   description: "Psychotherapy and coaching that designs your future. Work with fresh perspectives for individuals, couples, and systems. Amsterdam-based, globally connected.",
   keywords: ["therapy", "coaching", "couples therapy", "psychotherapy", "Amsterdam", "mental health", "design thinking"],
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Design Therapy",
+    url: "https://designtherapy.vercel.app",
   },
   twitter: {
     card: "summary_large_image",

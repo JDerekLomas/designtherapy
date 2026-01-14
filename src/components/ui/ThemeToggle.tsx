@@ -10,13 +10,15 @@ export function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // Check for saved preference or system preference
+    // Only use dark mode if explicitly saved, don't auto-detect from system
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    if (savedTheme === "dark") {
       setIsDark(true);
       document.documentElement.classList.add("dark");
+    } else {
+      // Ensure light mode
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 

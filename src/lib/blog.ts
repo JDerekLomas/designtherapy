@@ -319,7 +319,7 @@ Often, our current struggles are echoes of unresolved dynamics from generations 
 
 ## The Design Therapy Approach
 
-In sessions, we do this together—often literally, with rope and physical objects. Making your system tangible and spatial creates insights that conversation alone rarely achieves.
+In sessions, we do this together—often literally, with physical objects and spatial arrangements. Making your system tangible creates insights that conversation alone rarely achieves.
 
 But start here. Grab some paper. Map your world. See what you see.
     `,

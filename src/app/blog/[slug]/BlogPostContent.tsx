@@ -30,6 +30,13 @@ export function BlogPostContent({ post }: Props) {
     let inList = false;
     let listItems: string[] = [];
 
+    // Helper function to format inline text (bold, italic)
+    const formatInline = (text: string): string => {
+      return text
+        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.+?)\*/g, "<em>$1</em>");
+    };
+
     const flushList = () => {
       if (listItems.length > 0) {
         elements.push(
@@ -37,7 +44,7 @@ export function BlogPostContent({ post }: Props) {
             {listItems.map((item, i) => (
               <li key={i} className="flex gap-3">
                 <span className="text-terra-500 font-bold">•</span>
-                <span>{item}</span>
+                <span dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
               </li>
             ))}
           </ul>
@@ -96,9 +103,7 @@ export function BlogPostContent({ post }: Props) {
       else if (trimmed) {
         flushList();
         // Handle inline formatting
-        const formatted = trimmed
-          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-          .replace(/\*(.+?)\*/g, "<em>$1</em>")
+        const formatted = formatInline(trimmed)
           .replace(/"(.+?)"/g, '"<span class=\'font-handwriting text-xl\'>$1</span>"');
 
         elements.push(

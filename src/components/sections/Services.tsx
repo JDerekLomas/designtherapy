@@ -22,7 +22,7 @@ const services: Service[] = [
     title: "Couples Coaching",
     tagline: "Design Your Future Together",
     description:
-      "Navigate relationship challenges with fresh perspectives. Using the Rope Method and systemic approaches, discover new ways of connecting.",
+      "Navigate relationship challenges with fresh perspectives. Using systemic approaches and embodied exercises, discover new ways of connecting.",
     features: [
       "Relationship dynamics mapping",
       "Communication patterns",

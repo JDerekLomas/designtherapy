@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { PostIt, MarkerHighlight } from "@/components/ui/PostIt";
 
-interface HeroProps {
-  videoUrl?: string;
-}
-
-export function Hero({ videoUrl }: HeroProps) {
+export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background - Cork board / Canvas texture */}
@@ -24,50 +20,11 @@ export function Hero({ videoUrl }: HeroProps) {
             backgroundSize: "40px 40px",
           }}
         />
-
-        {/* Video background - subtle, in a "frame" */}
-        {videoUrl && (
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-[70vh] hidden lg:block">
-            <div className="relative w-full h-full rounded-l-3xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover opacity-80"
-              >
-                <source src={videoUrl} type="video/mp4" />
-              </video>
-              {/* Masking tape corners */}
-              <div className="absolute top-4 left-4 w-16 h-6 bg-[#F5F5DC]/80 rotate-[-8deg] shadow-sm" />
-              <div className="absolute top-4 right-4 w-16 h-6 bg-[#F5F5DC]/80 rotate-[5deg] shadow-sm" />
-              <div className="absolute bottom-4 left-4 w-16 h-6 bg-[#F5F5DC]/80 rotate-[3deg] shadow-sm" />
-              <div className="absolute bottom-4 right-4 w-16 h-6 bg-[#F5F5DC]/80 rotate-[-6deg] shadow-sm" />
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-wide py-32 lg:py-0">
-        <div className="max-w-3xl">
-          {/* Scattered post-it notes as design elements */}
-          <div className="absolute top-20 right-10 hidden xl:block">
-            <PostIt color="yellow" rotation={-3} size="sm">
-              <span className="text-lg">fresh ideas</span>
-            </PostIt>
-          </div>
-          <div className="absolute top-40 right-32 hidden xl:block">
-            <PostIt color="pink" rotation={5} size="sm">
-              <span className="text-lg">new patterns</span>
-            </PostIt>
-          </div>
-          <div className="absolute bottom-32 right-20 hidden xl:block">
-            <PostIt color="blue" rotation={-2} size="sm">
-              <span className="text-lg">your future</span>
-            </PostIt>
-          </div>
-
+      <div className="relative z-10 container-wide pt-32 pb-20 lg:pt-40 lg:pb-0">
+        <div className="max-w-3xl mx-auto lg:mx-0">
           {/* Main content card - like a whiteboard */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -105,10 +62,7 @@ export function Hero({ videoUrl }: HeroProps) {
               transition={{ delay: 0.6 }}
               className="body-lg text-ink-600 dark:text-cloud-400 mb-8 max-w-xl"
             >
-              Therapy that works like a design workshop.{" "}
-              <span className="font-handwriting text-2xl text-terra-600 dark:text-terra-400">
-                Map your patterns.
-              </span>{" "}
+              Therapy that works like a design workshop.
               Prototype new ways of being. Build the life and relationships you want.
             </motion.p>
 
@@ -116,51 +70,53 @@ export function Hero({ videoUrl }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
             >
               <motion.a
-                href="#schedule"
-                className="btn-primary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Start Your Design Process
-              </motion.a>
-              <motion.a
                 href="#approach"
-                className="btn-ghost font-handwriting text-xl"
+                className="btn-ghost font-handwriting text-xl pl-0"
                 whileHover={{ scale: 1.02 }}
               >
                 See how it works →
               </motion.a>
             </motion.div>
 
-            {/* Languages as post-it */}
+            {/* Languages as post-it - larger text */}
             <motion.div
               initial={{ opacity: 0, rotate: -5 }}
               animate={{ opacity: 1, rotate: -3 }}
               transition={{ delay: 1.2 }}
-              className="absolute -bottom-6 -right-4 md:right-8"
+              className="absolute -bottom-16 -right-4 md:right-8"
             >
-              <PostIt color="green" rotation={-3} size="sm">
-                <span className="text-sm font-handwriting">
-                  Sessions in:<br />
+              <PostIt color="green" rotation={-3} size="md">
+                <span className="font-handwriting text-xl font-semibold block mb-1">
+                  Sessions in:
+                </span>
+                <span className="font-handwriting text-xl">
                   English • German • Dutch
                 </span>
               </PostIt>
             </motion.div>
           </motion.div>
 
-          {/* Workshop tools decoration */}
+
+          {/* Location info */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="mt-8 flex items-center gap-4 text-ink-400 dark:text-cloud-600"
+            className="mt-20 flex flex-col gap-3"
           >
-            <span className="font-handwriting text-xl">Amsterdam, NL</span>
-            <span>•</span>
-            <span className="font-handwriting text-xl">In-person & Online</span>
+            <div className="flex items-center gap-4 text-ink-500 dark:text-cloud-500">
+              <span className="font-handwriting text-2xl">Amsterdam, NL</span>
+              <span className="text-xl">•</span>
+              <span className="font-handwriting text-2xl">In-person & Online</span>
+            </div>
+            <a
+              href="#schedule"
+              className="font-handwriting text-2xl text-terra-600 hover:text-terra-500 transition-colors"
+            >
+              Book now.
+            </a>
           </motion.div>
         </div>
       </div>
@@ -169,7 +125,7 @@ export function Hero({ videoUrl }: HeroProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8 }}
+        transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.a

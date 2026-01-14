@@ -112,22 +112,19 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="body-sm text-cloud-600">
-            &copy; {new Date().getFullYear()} Design Therapy. All rights reserved.
+            made with <span className="text-red-400">♥</span> in Amsterdam, NL by{" "}
+            <a
+              href="https://derek-lomas.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cloud-400 hover:text-cloud-200 transition-colors"
+            >
+              derek-lomas.com
+            </a>
           </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="/terms"
-              className="body-sm text-cloud-600 hover:text-cloud-300 transition-colors"
-            >
-              Terms & Conditions
-            </a>
-            <a
-              href="/privacy"
-              className="body-sm text-cloud-600 hover:text-cloud-300 transition-colors"
-            >
-              Privacy Policy
-            </a>
-          </div>
+          <p className="body-sm text-cloud-600">
+            &copy; {new Date().getFullYear()} Design Therapy
+          </p>
         </div>
       </div>
     </footer>
