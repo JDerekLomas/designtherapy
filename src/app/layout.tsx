@@ -1,57 +1,32 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono, Caveat } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/layout/Navigation";
-import { Footer } from "@/components/layout/Footer";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const playfair = Playfair_Display({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-handwriting",
+  weight: ["300", "700"],
+  style: ["normal"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://designtherapy.vercel.app"),
-  title: "Design Therapy | Transform Your Inner World",
-  description: "Psychotherapy and coaching that designs your future. Work with fresh perspectives for individuals, couples, and systems. Amsterdam-based, globally connected.",
-  keywords: ["therapy", "coaching", "couples therapy", "psychotherapy", "Amsterdam", "mental health", "design thinking"],
-  authors: [{ name: "Julika Lomas" }],
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+  title: {
+    default: "Design Therapy",
+    template: "%s -- Design Therapy",
   },
+  description:
+    "Psychotherapy and Coaching using promising new methods. Design Therapy is for individuals, couples, and small human systems seeking fresh perspectives on life design.",
   openGraph: {
-    title: "Design Therapy | Transform Your Inner World",
-    description: "Psychotherapy and coaching that designs your future.",
-    type: "website",
-    locale: "en_US",
+    title: "Design Therapy",
+    description: "New methods for building mental health",
+    url: "https://www.designtherapy.org",
     siteName: "Design Therapy",
-    url: "https://designtherapy.vercel.app",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Design Therapy | Transform Your Inner World",
-    description: "Psychotherapy and coaching that designs your future.",
+    locale: "en_US",
+    type: "website",
   },
 };
 
@@ -61,12 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${caveat.variable}`}>
-      <body className="grain relative min-h-screen">
-        <Navigation />
+    <html lang="en" className={outfit.variable}>
+      <body className="font-display">
+        <Header />
         <main>{children}</main>
         <Footer />
-        <ThemeToggle />
       </body>
     </html>
   );

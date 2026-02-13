@@ -3,26 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-display: "Playfair Display", serif;
-    --font-body: "Inter", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
-
-    --bg-primary: theme("colors.cloud.50");
-    --bg-secondary: theme("colors.cloud.100");
-    --text-primary: theme("colors.ink.900");
-    --text-secondary: theme("colors.ink.600");
-    --accent: theme("colors.terra.500");
-  }
-
-  .dark {
-    --bg-primary: theme("colors.ink.900");
-    --bg-secondary: theme("colors.ink.800");
-    --text-primary: theme("colors.cloud.100");
-    --text-secondary: theme("colors.cloud.400");
-    --accent: theme("colors.terra.400");
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -30,142 +10,66 @@
   }
 
   body {
-    @apply bg-cloud-50 text-ink-900 dark:bg-ink-900 dark:text-cloud-100;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    @apply bg-white text-black font-display font-light;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
   }
 
-  ::selection {
-    @apply bg-terra-200 dark:bg-terra-800;
+  h1 {
+    @apply text-h1 font-light mb-8;
+  }
+
+  h2 {
+    @apply text-h2 font-light mb-6;
+  }
+
+  h3 {
+    @apply text-h3 font-light my-8;
+    letter-spacing: 0.02em;
+  }
+
+  h4 {
+    @apply text-h4 font-light mb-4;
+  }
+
+  p {
+    @apply text-small text-dark mb-4;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  a {
+    @apply text-black no-underline;
   }
 }
 
 @layer components {
-  .container-wide {
-    @apply max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20;
+  .section-yellow {
+    @apply bg-yellow-brand text-black;
   }
 
-  .container-narrow {
-    @apply max-w-4xl mx-auto px-6 md:px-12;
+  .section-dark {
+    @apply bg-dark text-white;
   }
 
-  /* Typography styles */
-  .heading-xl {
-    @apply font-display text-display-xl font-light tracking-tight;
+  .section-white {
+    @apply bg-white text-black;
   }
 
-  .heading-lg {
-    @apply font-display text-display-lg font-light tracking-tight;
+  .container-site {
+    @apply max-w-content mx-auto px-[4vw];
   }
 
-  .heading-md {
-    @apply font-display text-display-md font-normal;
+  .btn-pill {
+    @apply inline-block rounded-full border-2 border-medium-gray bg-medium-gray text-white
+           px-[2em] py-[1.2em] text-small font-light tracking-[0.02em]
+           hover:bg-transparent hover:text-medium-gray transition-colors duration-300 cursor-pointer;
   }
 
-  .heading-sm {
-    @apply font-display text-display-sm font-normal;
-  }
-
-  .body-lg {
-    @apply font-body text-xl md:text-2xl leading-relaxed;
-  }
-
-  .body-md {
-    @apply font-body text-base md:text-lg leading-relaxed;
-  }
-
-  .body-sm {
-    @apply font-body text-sm leading-relaxed;
-  }
-
-  .label {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-ink-500 dark:text-cloud-500;
-  }
-
-  /* Button styles */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-body text-sm uppercase tracking-[0.15em] transition-all duration-300;
-  }
-
-  .btn-primary {
-    @apply btn bg-ink-900 text-cloud-50 hover:bg-ink-700 dark:bg-cloud-100 dark:text-ink-900 dark:hover:bg-cloud-200;
-  }
-
-  .btn-secondary {
-    @apply btn border border-ink-900 text-ink-900 hover:bg-ink-900 hover:text-cloud-50 dark:border-cloud-100 dark:text-cloud-100 dark:hover:bg-cloud-100 dark:hover:text-ink-900;
-  }
-
-  .btn-ghost {
-    @apply btn text-ink-900 hover:text-terra-600 dark:text-cloud-100 dark:hover:text-terra-400;
-  }
-
-  /* Glass effect for glassmorphism */
-  .glass {
-    @apply bg-white/60 dark:bg-ink-800/60 backdrop-blur-xl border border-white/20 dark:border-ink-700/30;
-  }
-
-  .glass-card {
-    @apply glass rounded-2xl shadow-lg shadow-ink-900/5 dark:shadow-black/20;
-  }
-
-  /* Grain texture overlay */
-  .grain::before {
-    content: "";
-    @apply absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05];
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    animation: grain 8s steps(10) infinite;
-  }
-
-  /* Animated underline */
-  .link-underline {
-    @apply relative;
-  }
-
-  .link-underline::after {
-    content: "";
-    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-current transition-all duration-300;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
-  }
-
-  /* Section divider */
-  .divider {
-    @apply h-px bg-gradient-to-r from-transparent via-ink-200 to-transparent dark:via-ink-700;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .animate-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .animate-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animate-delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .animate-delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .animate-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  /* Scroll-triggered animations */
-  .reveal {
-    @apply opacity-0 translate-y-8;
-  }
-
-  .reveal.active {
-    @apply opacity-100 translate-y-0 transition-all duration-700 ease-out;
+  .btn-pill-outline {
+    @apply inline-block rounded-full border-2 border-medium-gray text-medium-gray
+           px-[2em] py-[1.2em] text-small font-light tracking-[0.02em]
+           hover:bg-medium-gray hover:text-white transition-colors duration-300 cursor-pointer;
   }
 }
