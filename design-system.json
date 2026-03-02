@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "source": "https://www.pixelstorystudio.com/",
+    "platform": "Squarespace",
+    "templateFamily": "Bedford/Anya (Squarespace 7.0)",
+    "extractedAt": "2026-02-13",
+    "screenshot": "/tmp/pixelstory-home.png"
+  },
+
+  "colors": {
+    "primary": {
+      "coral": "rgb(255, 87, 87)",
+      "coralHex": "#FF5757",
+      "teal": "rgb(82, 194, 200)",
+      "tealHex": "#52C2C8",
+      "black": "rgb(0, 0, 0)",
+      "blackHex": "#000000",
+      "white": "rgb(255, 255, 255)",
+      "whiteHex": "#FFFFFF"
+    },
+    "neutral": {
+      "darkGray": "rgb(13, 13, 13)",
+      "darkGrayHex": "#0D0D0D",
+      "mediumGray": "rgb(153, 153, 153)",
+      "mediumGrayHex": "#999999",
+      "lightGray": "rgb(221, 221, 221)",
+      "lightGrayHex": "#DDDDDD",
+      "nearBlack": "rgb(17, 17, 17)",
+      "nearBlackHex": "#111111"
+    },
+    "backgrounds": {
+      "body": "#FFFFFF",
+      "header": "#52C2C8",
+      "footer": "#0D0D0D",
+      "cta": "#FF5757"
+    },
+    "text": {
+      "primary": "#000000",
+      "secondary": "#999999",
+      "onDark": "#FFFFFF",
+      "accent": "#FF5757",
+      "muted": "#DDDDDD"
+    }
+  },
+
+  "typography": {
+    "fonts": {
+      "heading": {
+        "family": "dinosaur",
+        "source": "Adobe Typekit (via use.typekit.net)",
+        "fallback": "sans-serif",
+        "weights": [300, 400, 700],
+        "styles": ["normal", "italic"],
+        "note": "Custom Adobe font. For Next.js, license through Adobe Fonts or substitute with a similar geometric sans-serif like 'Poppins' or 'Outfit'."
+      },
+      "body": {
+        "family": "Libre Franklin",
+        "source": "Google Fonts",
+        "url": "https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700",
+        "weights": [400, 500, 700],
+        "styles": ["normal", "italic"]
+      },
+      "accent": {
+        "family": "Fjalla One",
+        "source": "Google Fonts",
+        "url": "https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400",
+        "weights": [400],
+        "usage": "Section labels, button text, uppercase headings"
+      }
+    },
+    "scale": {
+      "h1": {
+        "fontFamily": "dinosaur",
+        "fontSize": "54px",
+        "fontWeight": 400,
+        "letterSpacing": "0.54px",
+        "lineHeight": "normal",
+        "color": "#000000"
+      },
+      "h2": {
+        "fontFamily": "dinosaur",
+        "fontSize": "32px",
+        "fontWeight": 300,
+        "letterSpacing": "0.64px",
+        "lineHeight": "normal",
+        "color": "#000000"
+      },
+      "h3": {
+        "fontFamily": "Fjalla One",
+        "fontSize": "13px",
+        "fontWeight": 400,
+        "letterSpacing": "normal",
+        "textTransform": "uppercase",
+        "color": "#000000",
+        "usage": "Section subheadings / labels like 'Nice to E-Meet you'"
+      },
+      "body": {
+        "fontFamily": "Libre Franklin",
+        "fontSize": "12px",
+        "fontWeight": 400,
+        "letterSpacing": "0.72px",
+        "lineHeight": "21.6px",
+        "color": "#000000"
+      },
+      "navItem": {
+        "fontFamily": "dinosaur",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "letterSpacing": "0.84px",
+        "textTransform": "uppercase",
+        "color": "#999999"
+      },
+      "branding": {
+        "fontFamily": "dinosaur",
+        "fontSize": "64px",
+        "fontWeight": 400,
+        "letterSpacing": "2.56px",
+        "textTransform": "uppercase",
+        "color": "#FF5757"
+      }
+    }
+  },
+
+  "layout": {
+    "maxWidth": "1680px",
+    "siteWidth": "full-background",
+    "headerInnerPadding": "15px 35px",
+    "containerWidth": "1440px",
+    "sections": [
+      {
+        "id": "home-projects-category",
+        "name": "Top Project Category",
+        "height": 2008,
+        "bg": "#FFFFFF",
+        "layout": "2x2 grid of project cards with images"
+      },
+      {
+        "id": "home-credo",
+        "name": "Hero / Credo",
+        "height": 1024,
+        "bg": "transparent (has background image)",
+        "layout": "Split layout - image left, text content right",
+        "note": "Parallax background image enabled"
+      },
+      {
+        "id": "home-about",
+        "name": "About Julika",
+        "height": 829,
+        "bg": "#FFFFFF",
+        "layout": "Text content with heading and bio paragraph"
+      }
+    ]
+  },
+
+  "components": {
+    "header": {
+      "backgroundColor": "#52C2C8",
+      "position": "static",
+      "innerMaxWidth": "1680px",
+      "innerPadding": "15px 35px",
+      "display": "flex",
+      "alignItems": "center",
+      "note": "Header uses display:none at 1440px viewport (likely shows only on scroll or mobile). Branding and nav visible in alternate layout."
+    },
+    "navigation": {
+      "structure": {
+        "topLevel": ["Design X Life (folder)", "Projects (folder)", "Design Therapy", "Elevate", "About"],
+        "designXLife": ["The Vision", "The PS Story Blog"],
+        "projects": ["Company Culture & Wellbeing", "Community Building", "Diversity & Inclusion", "Good Design & Mental Health", "All Projects Portfolio"]
+      },
+      "desktop": {
+        "fontFamily": "dinosaur",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "letterSpacing": "0.84px",
+        "textTransform": "uppercase",
+        "color": "#999999",
+        "hoverStyle": "plain"
+      },
+      "mobile": {
+        "fontFamily": "Libre Franklin",
+        "fontSize": "16px",
+        "fontWeight": 500,
+        "color": "#FFFFFF",
+        "overlay": {
+          "backgroundColor": "#52C2C8",
+          "slideOrigin": "left"
+        }
+      }
+    },
+    "button": {
+      "primary": {
+        "backgroundColor": "#FF5757",
+        "color": "#FFFFFF",
+        "border": "none",
+        "borderRadius": "0px",
+        "padding": "21px 34px",
+        "fontFamily": "Fjalla One",
+        "fontSize": "15px",
+        "fontWeight": 400,
+        "letterSpacing": "1.5px",
+        "textTransform": "uppercase",
+        "shape": "square"
+      },
+      "style": "solid",
+      "cornerStyle": "square"
+    },
+    "footer": {
+      "backgroundColor": "#0D0D0D",
+      "textColor": "#FFFFFF",
+      "height": 857,
+      "layout": "columns (auto)",
+      "content": {
+        "contactInfo": "Pixel Story Studio, Amsterdam, The Netherlands, info@pixelstorystudio.com",
+        "instagramFeed": true,
+        "socialIcons": "solid, square style"
+      }
+    },
+    "projectCard": {
+      "layout": "Image with text overlay/caption below",
+      "readMoreLink": "Read More (arrow)",
+      "imageAspect": "landscape"
+    }
+  },
+
+  "fontFaces": {
+    "dinosaur": {
+      "source": "Adobe Typekit",
+      "variants": [
+        { "weight": 300, "style": "normal", "woff2": "https://use.typekit.net/af/0beba4/00000000000000007735cf61/31/l?subset_id=2&fvd=n3&v=3" },
+        { "weight": 400, "style": "normal", "woff2": "https://use.typekit.net/af/52e464/00000000000000007735cf68/31/l?subset_id=2&fvd=n4&v=3" },
+        { "weight": 700, "style": "normal", "woff2": "https://use.typekit.net/af/fd43fb/00000000000000007735cf78/31/l?subset_id=2&fvd=n7&v=3" },
+        { "weight": 300, "style": "italic", "woff2": "https://use.typekit.net/af/ef92b9/00000000000000007735cf66/31/l?subset_id=2&fvd=i3&v=3" },
+        { "weight": 400, "style": "italic", "woff2": "https://use.typekit.net/af/a8946b/00000000000000007735cf6c/31/l?subset_id=2&fvd=i4&v=3" },
+        { "weight": 700, "style": "italic", "woff2": "https://use.typekit.net/af/4cb22d/00000000000000007735cf75/31/l?subset_id=2&fvd=i7&v=3" }
+      ]
+    }
+  },
+
+  "stylesheets": [
+    "https://fonts.googleapis.com/css2?family=Fjalla+One:ital,wght@0,400&family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700",
+    "https://static1.squarespace.com/static/sitecss/57434d9c8259b5c4c97a6e91/83/55f0aac0e4b0f0a5b7e0b22e/60929ac75bbb0d325cfc9ac8/358/site.css"
+  ],
+
+  "openGraph": {
+    "siteName": "Pixel Story Studio",
+    "title": "Pixel Story Studio",
+    "url": "http://www.pixelstorystudio.com",
+    "type": "website"
+  },
+
+  "siteMap": [
+    { "path": "/", "label": "Home" },
+    { "path": "/design-therapy", "label": "Design Therapy" },
+    { "path": "/elevate", "label": "Elevate" },
+    { "path": "/about", "label": "About" },
+    { "path": "/the-vision", "label": "The Vision" },
+    { "path": "/the-pss-story-blog", "label": "The PS Story Blog" },
+    { "path": "/design-x-life", "label": "Design X Life" },
+    { "path": "/Projects", "label": "Projects" },
+    { "path": "/company-culture", "label": "Company Culture & Wellbeing" },
+    { "path": "/community-building", "label": "Community Building" },
+    { "path": "/diversity-inclusion", "label": "Diversity & Inclusion" },
+    { "path": "/good-design-mental-health", "label": "Good Design & Mental Health" },
+    { "path": "/all-projets-portfolio", "label": "All Projects Portfolio" }
+  ],
+
+  "tailwindConfig": {
+    "note": "Suggested Tailwind CSS configuration to replicate the design system",
+    "theme": {
+      "extend": {
+        "colors": {
+          "coral": "#FF5757",
+          "teal": "#52C2C8",
+          "dark": "#0D0D0D",
+          "near-black": "#111111",
+          "medium-gray": "#999999",
+          "light-gray": "#DDDDDD"
+        },
+        "fontFamily": {
+          "heading": ["dinosaur", "sans-serif"],
+          "body": ["Libre Franklin", "sans-serif"],
+          "accent": ["Fjalla One", "sans-serif"]
+        },
+        "fontSize": {
+          "branding": ["64px", { "letterSpacing": "2.56px", "fontWeight": "400" }],
+          "h1": ["54px", { "letterSpacing": "0.54px", "fontWeight": "400" }],
+          "h2": ["32px", { "letterSpacing": "0.64px", "fontWeight": "300" }],
+          "h3": ["13px", { "letterSpacing": "normal", "fontWeight": "400" }],
+          "nav": ["14px", { "letterSpacing": "0.84px", "fontWeight": "400" }],
+          "body": ["12px", { "letterSpacing": "0.72px", "lineHeight": "21.6px" }],
+          "button": ["15px", { "letterSpacing": "1.5px", "fontWeight": "400" }]
+        },
+        "maxWidth": {
+          "site": "1680px"
+        }
+      }
+    }
+  }
+}
