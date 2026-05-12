@@ -2,64 +2,94 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main>
+      {/* Full-width Hero Banner Image */}
+      <section className="relative w-full">
+        <div className="relative w-full aspect-[2.42/1]">
+          <Image
+            src="/images/julika-hero.jpg"
+            alt="Julika Lomas, Design Therapy founder"
+            fill
+            priority
+            className="object-cover object-[center_25%]"
+            sizes="100vw"
+          />
+        </div>
+      </section>
+
+      {/* Main Text Section */}
+      <section className="section-padding bg-white">
+        <div className="max-w-[800px] mx-auto">
+          <h1 className="text-[1.75rem] md:text-[2.25rem] leading-tight mb-2">
+            Design Therapy &ndash;
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <h2 className="text-[1.25rem] md:text-[1.5rem] font-light text-[#1a1a1a] mb-8 italic">
+            New methods for building mental health
+          </h2>
+
+          <div className="space-y-4 text-[0.9375rem] text-[#4a4a4a] leading-relaxed">
+            <p>
+              Psychotherapy and Coaching is for people who want to change their lives in positive ways.
+              Design Therapy is for people who&rsquo;d like to use promising new methods to make those
+              changes to address current issues while also building well-being for the future.
+            </p>
+            <p>
+              Who, exactly, is Design Therapy for? For individuals, couples and small human systems.
+              It is for people looking for fresh perspectives. That means taking a thoughtful look at
+              your life&mdash;not just your past, but your present, and, crucially, designing your future.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Two Images Side by Side */}
+      <section className="section-padding bg-white pt-0">
+        <div className="max-w-[1000px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Couples Coaching */}
+            <div>
+              <div className="relative aspect-[4/3] mb-3">
+                <Image
+                  src="/images/couples-coaching.jpg"
+                  alt="Couples coaching - Design Your Future Together on the couch or online"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <p className="text-[0.8125rem] text-[#4a4a4a] leading-relaxed">
+                Couples Coaching. &ldquo;Design Your Future Together&rdquo; on the couch or online.
+              </p>
+            </div>
+
+            {/* Rope Method */}
+            <div>
+              <div className="relative aspect-[4/3] mb-3">
+                <Image
+                  src="/images/rope-method.jpg"
+                  alt="Off the couch and into an embodied exercise - Rope Method for Design Your Life"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <p className="text-[0.8125rem] text-[#4a4a4a] leading-relaxed">
+                Off the couch and into an embodied exercise. Rope Method for &ldquo;Design Your Life&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* Footnote text */}
+          <div className="mt-8 space-y-2 text-[0.8125rem] text-[#8a8a8a]">
+            <p>
+              * People shown here are peers helping me to visualize the work &ndash; never clients.
+            </p>
+            <p>
+              All work is strictly confidential.
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
